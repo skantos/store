@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'store/main.html' %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/globals.css' %}">
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+<div class="row">
+    {% for product in products %}
+    <div class="col-lg-4">
+        <img class="card-img-top" src="{{product.imageURL}}">
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+			<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+            <h4 style="display: inline-block; "><strong>${{product.price}}</strong></h4>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+</body>
+</html>
